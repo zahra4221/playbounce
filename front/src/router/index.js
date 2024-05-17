@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomePageView.vue'
+import GalleriePage from '../views/GalleryPage.vue'
+import EventsPage from '@/views/EventsPage.vue'
+// import BookingPage from '@/views/BookingPage.vue'
+import MatchPage from '@/views/MatchPage.vue'
+import ScorePage from '@/views/ScorePage.vue'
+import LoginPage from '@/views/LoginPage.vue'
+import RegistrationPage from '@/views/RegistrationPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,13 +17,40 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+      path: '/gallerie',
+      name: 'gallerie',
+      component: GalleriePage
+    },
+    {
+      path: '/evenements',
+      name: 'evenements',
+      component: EventsPage
+    },
+    {
+      path: '/matchs',
+      name: 'matchs',
+      component: MatchPage
+    },
+    {
+      path: '/score',
+      name: 'scores',
+      component: ScorePage
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginPage
+    },
+    {
+      path: '/inscription',
+      name: 'inscription',
+      component: RegistrationPage
+    },
+    // {
+    //   path: '/reservation',
+    //   name: 'reservation',
+    //   component: BookingPage
+    // },
   ]
 })
 
