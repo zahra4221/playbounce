@@ -3,23 +3,35 @@
        <div class="login">
            <img class="login_fond" src="../assets/registration.png"/>
            <form class="form-container">
-               <div class="form-group">
-                   <label for="email">Email</label>
-                   <input type="email" id="email" name="email" required placeholder="Entrez votre email">
-               </div>
-               <div class="form-group">
-                   <label for="password">Mot de passe</label>
-                   <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
-               </div>
-               <button type="submit">Inscription</button>
-           </form>
+                <div class="form-group">
+                    <label for="firstName">Prénom :</label>
+                    <input class="input" type="text" id="firstName" name="firstName" required placeholder="Entrez votre prénom">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nom :</label>
+                    <input class="input" type="text" id="lastName" name="lastName" required placeholder="Entrez votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Date de naissance :</label>
+                    <input class="input" type="date" id="birthDate" name="birthDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input class="input" type="email" id="email" name="email" required placeholder="Entrez votre email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Choisissez un mot de passe :</label>
+                    <input class="input" type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
+                </div>
+                <button type="submit">Valider votre inscription</button>
+            </form>
        </div>
     </div>
    </template>
    <style scoped>
    .container {
      text-align: center;
-     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('../assets/login.webp');
+     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('../assets/login.png');
      background-size: cover;
      background-position: center;
      background-repeat: no-repeat;
@@ -40,7 +52,7 @@
    
    .form-container {
        position: absolute;
-       top: 40%;  /* Center vertically */
+       top: 57%;  /* Center vertically */
        left: 50%; /* Center horizontally */
        transform: translate(-50%, -50%);
        width: 80%; /* Adjust based on your image's aspect ratio */
@@ -55,9 +67,9 @@
        margin-bottom: 5px;
    }
    
-   input[type="email"], input[type="password"] {
+   .input {
        width: 60%;
-       padding: 10px;
+       padding: 5px;
        border: 1px solid #ccc;
        border-radius: 5px;
    }
