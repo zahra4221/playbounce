@@ -2,7 +2,7 @@
     <div class="container">
       <div class="login">
         <img class="login_fond" src="../assets/fond_login.png" />
-        <form class="form-container" @submit.prevent="loginUser">
+        <form class="form-container" @submit.prevent="loginAdmin">
           <div class="form-group">
             <label for="email">Email :</label>
             <input
@@ -37,26 +37,25 @@
   const email = ref('');
   const password = ref('');
   const isLoggedIn = inject('isLoggedIn');
+  const userRole = inject('userRole');
   const router = useRouter();
   
-  const loginUser = async () => {
+  const loginAdmin = async () => {
     try {
       const response = await axios.post('http://localhost:3000/api/auth/login', {
         email: email.value,
         password: password.value,
       });
-  
-      // Vérifiez si response.data est défini
-      if (response && response.data) {
-        alert('Connexion réussie !');
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userId', response.data.userId);
-        localStorage.setItem('role', response.data.role);
-        isLoggedIn.value = true;
-        router.push('/');
-      } else {
-        throw new Error('Invalid response from server');
+      if (response.data.role !== 'admin') {
+        throw new Error('Accès non autorisé');
       }
+      alert('Connexion réussie !');
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('userId', response.data.userId);
+      localStorage.setItem('role', response.data.role);
+      isLoggedIn.value = true;
+      userRole.value = response.data.role;
+      router.push('/admin/dashboard');
     } catch (error) {
       console.error('Erreur lors de la connexion:', error.response ? error.response.data : error.message);
       alert('Erreur lors de la connexion, veuillez réessayer.');
@@ -71,7 +70,7 @@
         rgba(255, 255, 255, 0.2),
         rgba(255, 255, 255, 0.2)
       ),
-      url('../assets/login.png');
+      url('../assets/admin_login.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -80,7 +79,7 @@
   
   .login {
     position: relative;
-    display: inline-block; /* Adjust this as needed to control the form's positioning */
+    display: inline-block;
   }
   
   .login_fond {
@@ -92,10 +91,10 @@
   
   .form-container {
     position: absolute;
-    top: 60%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 60%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust based on your image's aspect ratio */
+    width: 80%;
   }
   
   .form-group {

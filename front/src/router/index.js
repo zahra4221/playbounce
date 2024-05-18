@@ -7,6 +7,8 @@ import MatchPage from '@/views/MatchPage.vue'
 import ScorePage from '@/views/ScorePage.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import RegistrationPage from '@/views/RegistrationPage.vue'
+import AdminLogin from '@/views/AdminLogin.vue'
+import AdminDashboard from '@/views/AdminDashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +18,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    { path: '/admin/login', name: 'AdminLogin', component: AdminLogin },
+  { path: '/admin/dashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true, isAdmin: true } },
     {
       path: '/gallerie',
       name: 'gallerie',
@@ -53,5 +57,23 @@ const router = createRouter({
     // },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+  
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!token) {
+      next({ name: 'Login' });
+    } else if (to.matched.some(record => record.meta.isAdmin) && role !== 'admin') {
+      next({ name: 'Home' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 
 export default router

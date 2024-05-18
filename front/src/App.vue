@@ -1,10 +1,17 @@
+
 <script setup>
-import TheFooter from './components/TheFooter.vue'
-import TheHeader from './components/TheHeader.vue'
+import { ref, provide } from 'vue';
+import Header from './components/TheHeader.vue';
+
+const isLoggedIn = ref(!!localStorage.getItem('token'));
+const userRole = ref(localStorage.getItem('role'));
+
+provide('isLoggedIn', isLoggedIn);
+provide('userRole', userRole);
 </script>
 <template>
   <div id="app">
-    <TheHeader></TheHeader>
+    <Header></Header>
     <router-view />
     <TheFooter></TheFooter>
   </div>
