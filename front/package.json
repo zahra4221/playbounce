@@ -10,10 +10,13 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^8.6.0",
     "axios": "^1.6.8",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "vue-cal": "^4.8.1",
+    "vue-router": "^4.2.5",
+    "vue3-date-time-picker": "^2.8.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.3",
