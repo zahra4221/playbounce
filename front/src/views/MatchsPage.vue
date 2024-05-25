@@ -6,7 +6,8 @@
 
     <div v-if="matchs.length === 0">Aucun match disponible.</div>
     <div v-else>
-      <div v-for="match in matchs" :key="match._id" class="match">
+      <div v-for="match in matchs" :key="match._id">
+        <div class="match">
         <p class="match-date">Date: {{ new Date(match.date).toLocaleString() }} - {{ match.sport }}</p>
 
         <div class="team-logos">
@@ -19,6 +20,7 @@
           <span>{{ match.team2 }}</span>
         </div>
         <button class="button_basket" @click="openReservationModal(match)">Réserver ce match</button>
+      </div>
       </div>
     </div>
 
@@ -176,7 +178,7 @@ onMounted(fetchMatchs);
   margin: 0 10%;
   padding: 2%;
   color: white;
-  background-color: rgba(0, 0, 0, 0.62); /* Black with 62% opacity */
+  background-color: rgba(0, 0, 0, 0.62); 
 }
 
 .team-logos {
@@ -193,7 +195,7 @@ onMounted(fetchMatchs);
 
 .match-date {
   margin-top: 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .button_basket {
@@ -207,7 +209,7 @@ onMounted(fetchMatchs);
 
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;

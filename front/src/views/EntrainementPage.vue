@@ -1,18 +1,51 @@
 <template>
     <div class="container">
+      <div class="container">
       <img class="foot_pic" src="../assets/terrain1.png" alt="Background">
       <div class="pic_contain">
         <div class="foot_text">
           <h2>Basketball Air</h2>
-          <p>Sur ce terrain, le plaisir du sport se mêle à la compétition amicale, offrant une expérience immersive et inoubliable à chaque joueur</p>
+          <p>
+            Découvrez le Basketball Air, une version dynamique et exaltante du basketball traditionnel.
+Sur ce terrain unique, des trampolines sont intégrés directement sous les paniers, permettant aux joueurs de toutes compétences de vivre l'excitation de réaliser des dunks spectaculaires.  Parfait pour les groupes d'amis, les fêtes ou les événements d'entreprise, rejoignez-nous pour une expérience de jeu sans pareil où la compétition amicale rencontre l'innovation sportive!
+</p>
+
           <button class="reserve-button" @click="openReservationModal">Réserver</button>
         </div>
         <img class="foot_pic_2" src="../assets/terrain1.1.png">
+      </div>
+      </div>
+      <div class="container">
+      <img class="foot_pic" src="../assets/terrain2.png" alt="Background">
+      <div class="pic_contain">
+        <div class="foot_text">
+          <h2>Basketball</h2>
+          <p>
+  Découvrez notre <strong>terrain de basketball intérieur</strong>, un espace conçu pour les amateurs et les professionnels. Équipé d'un sol en parquet haut de gamme, ce terrain offre un amorti optimal et une excellente réponse sous le pied, permettant des performances de jeu améliorées et une expérience utilisateur supérieure. Que vous cherchiez à organiser des tournois ou simplement à jouer entre amis, notre terrain intérieur est le lieu idéal pour montrer vos compétences tout au long de l'année, indépendamment des conditions météorologiques extérieures.
+</p>
+          <button class="reserve-button" @click="openReservationModal">Réserver</button>
+        </div>
+        <img class="foot_pic_2" src="../assets/terrain2.1.png">
+      </div>
+      </div>
+      <div class="container">
+      <img class="foot_pic" src="../assets/terrain3.png" alt="Background">
+      <div class="pic_contain">
+        <div class="foot_text">
+          <h2>FootBall</h2>
+          <p>
+  Plongez dans l'action sur notre <strong>terrain de football intérieur</strong>. Conçu avec un gazon artificiel de pointe, ce terrain simule parfaitement les conditions d'un terrain extérieur tout en offrant les avantages d'un espace couvert. Idéal pour les matchs en soirée ou les jours de pluie, il permet aux joueurs de profiter d'une surface de jeu constante et sûre. Organisez vos compétitions ou entraînements dans un environnement contrôlé où passion et sport se rencontrent pour créer une expérience inoubliable.
+</p>
+          <button class="reserve-button" @click="openReservationModal">Réserver</button>
+        </div>
+        <img class="foot_pic_2" src="../assets/terrain3.1.png">
+      </div>
       </div>
       <div v-if="showModal" class="modal">
         <div class="modal-content">
           <span class="close" @click="closeReservationModal">&times;</span>
           <h3>Réserver le terrain</h3>
+          <p>Tarif selon votre profil, à consulter directement à la page tarif.</p>
           <form @submit.prevent="makeReservation">
             <div class="form-group">
             <label for="fieldType">Type de terrain :</label>
@@ -123,13 +156,12 @@
 
   
   <style scoped>
-  .container {
-    position: relative;
-    width: 100%;
-    margin-top: 8%;
+.container {
+position: relative; 
+width: 100%; 
+margin-bottom: 15%;
+}
 
-  }
-  
   .foot_pic {
     width: 100%;
     position: absolute;
@@ -177,10 +209,10 @@
   
   @media (max-width: 768px) {
     .foot_text p {
-      font-size: 12px;
+      font-size:0.5rem;
     }
     .foot_text h2 {
-      font-size: 22px;
+      font-size: 14px;
     }
   }
   
@@ -201,7 +233,7 @@
   
   .modal {
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -237,7 +269,7 @@
   }
   
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
   
   label {
@@ -269,6 +301,7 @@
     font-size: 16px;
     cursor: pointer;
     width: 100%;
+    margin-top: 5%;
   }
   
   button:hover {

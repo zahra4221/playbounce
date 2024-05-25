@@ -29,19 +29,20 @@ exports.getAllMatchs = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 };
 
-// Mettre à jour le score d'un match
-exports.updateScore = (req, res, next) => {
-  Match.findById(req.params.id)
-    .then(match => {
-      if (!match) {
-        return res.status(404).json({ error: 'Match non trouvé !' });
-      }
-      match.score.team1Score = req.body.team1Score;
-      match.score.team2Score = req.body.team2Score;
-      return match.save();
-    })
-    .then(() => res.status(200).json({ message: 'Score mis à jour !' }))
-    .catch(error => res.status(400).json({ error }));
+// In your Match controller
+exports.updateScore = async (req, res) => {
+  try {
+    const match = await Match.findById(req.params.id);
+    if (!match) {
+      return res.status(404).json({ message: 'Match not found' });
+    }
+    match.score.team1Score = req.body.team1Score;
+    match.score.team2Score = req.body.team2Score;
+    await match.save();
+    res.status(200).json({ message: 'Score updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // Obtenir toutes les réservations de match

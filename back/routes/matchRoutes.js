@@ -8,9 +8,9 @@ const auth = require('../middlewares/auth');
 router.post('/add', auth, upload.fields([{ name: 'team1Logo', maxCount: 1 }, { name: 'team2Logo', maxCount: 1 }]), matchController.addMatch);
 
 router.get('/', matchController.getAllMatchs);
-router.patch('/:id/score', matchController.updateScore);
 router.get('/reservations', matchController.getAllReservations);
 router.delete('/:id', auth, matchController.deleteMatch);
 router.get('/reservations/user', auth, matchController.getUserMatchReservations);
+router.put('/score/:id', auth, matchController.updateScore);
 
 module.exports = router;

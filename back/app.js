@@ -19,7 +19,7 @@ const matchRoutes = require('./routes/matchRoutes');
 const adminRoutes = require('./routes/admin');
 const reservationRoutes = require('./routes/reservationRoutes');
 const trainingReservationRoutes = require('./routes/trainingReservationRoutes'); // Ajouté
-
+const contactRoutes = require('./routes/contactRoutes')
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   );
   next();
 });
-
+app.use('/', contactRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/matchs', matchRoutes);
 app.use('/api/admin', adminRoutes);

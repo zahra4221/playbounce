@@ -46,7 +46,6 @@
         password: password.value,
       });
   
-      // Vérifiez si response.data est défini
       if (response && response.data) {
         alert('Connexion réussie !');
         localStorage.setItem('token', response.data.token);
@@ -75,12 +74,12 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 200vh;
+    height: 100vh;
   }
   
   .login {
     position: relative;
-    display: inline-block; /* Adjust this as needed to control the form's positioning */
+    display: inline-block; 
   }
   
   .login_fond {
@@ -92,10 +91,10 @@
   
   .form-container {
     position: absolute;
-    top: 60%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 60%; 
+    left: 50%; 
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust based on your image's aspect ratio */
+    width: 80%; 
   }
   
   .form-group {
@@ -127,7 +126,7 @@
   }
   
   button:hover {
-    background-color: #0400ff;
+    background-color: #F83D3D;
   }
   </style>
   

@@ -158,12 +158,13 @@ const updateScore = async () => {
         Authorization: `Bearer ${token}`
       }
     });
-    alert('Score mis à jour avec succès !');
+    alert('Score updated successfully!');
   } catch (error) {
-    console.error('Erreur lors de la mise à jour du score :', error.response ? error.response.data : error.message);
-    alert('Erreur lors de la mise à jour du score, veuillez réessayer.');
+    console.error('Error updating the score:', error.response ? error.response.data : error);
+    alert('Error updating the score, please try again.');
   }
 };
+
 
 const deleteMatch = async () => {
   try {
@@ -228,7 +229,7 @@ onMounted(fetchMatchs);
 }
 
 h2 {
-  color: #007bff;
+  color: #F83D3D;
   font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -260,7 +261,7 @@ button {
   padding: 0.75rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #007bff;
+  background-color: #3DCBF8;
   color: white;
   font-size: 1rem;
   cursor: pointer;

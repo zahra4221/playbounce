@@ -8,7 +8,6 @@ exports.makeReservation = async (req, res) => {
     console.log('Received data:', req.body);
     console.log('User ID:', userId);
 
-    // Vérifier s'il existe déjà une réservation pour ce créneau horaire
     const conflictingReservation = await TrainingReservation.findOne({ date, time, fieldType });
     if (conflictingReservation) {
       console.log('Conflicting reservation found:', conflictingReservation);

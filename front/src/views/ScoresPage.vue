@@ -13,9 +13,7 @@
         <div class="scores">
           <span>{{ match.team1 }}: {{ match.score.team1Score }}</span>
           <span>{{ match.team2 }}: {{ match.score.team2Score }}</span>
-
         </div>
-        <button class="button_basket" @click="openReservationModal(match)">Réserver ce match</button>
       </div>
     </div>
   </div>
@@ -77,7 +75,7 @@ h2 {
   margin: 1rem 10%; 
   padding: 2%;
   color: white;
-  background-color: rgba(0, 0, 0, 0.62); /* Black with 62% opacity */
+  background-color: rgba(0, 0, 0, 0.62); 
   border-radius: 10px;
 }
 

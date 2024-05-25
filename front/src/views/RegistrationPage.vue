@@ -49,7 +49,6 @@ const registerUser = async () => {
             password: password.value,
         });
         alert('Inscription réussie !');
-        // Rediriger ou vider le formulaire après le succès
     } catch (error) {
         console.error('Erreur lors de l\'inscription:', error.response.data);
         alert('Erreur lors de l\'inscription, veuillez réessayer.');
@@ -69,7 +68,7 @@ const registerUser = async () => {
 
 .login {
     position: relative;
-    display: inline-block; /* Adjust this as needed to control the form's positioning */
+    display: inline-block; 
 }
 
 .login_fond {
@@ -81,10 +80,10 @@ const registerUser = async () => {
 
 .form-container {
     position: absolute;
-    top: 57%;  /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 57%; 
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust based on your image's aspect ratio */
+    width: 80%;
 }
 
 .form-group {
@@ -108,13 +107,13 @@ button {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(0, 0, 0);
     color: white;
     cursor: pointer;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #F83D3D;
 }
 </style>

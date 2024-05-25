@@ -1,80 +1,72 @@
 <template>
-  <div class="container">
-    <div class="parent">
-      <div class="div1">
-        <img src="../assets/gallerie1.png"/>
+  <Carousel :autoplay="2000" :wrap-around="true">
+    <Slide v-for="(item, index) in items" :key="index">
+      <div class="carousel__item">
+        <img :src="item.image" :alt="item.title" class="carousel-image" />
       </div>
-      <div class="div2">
-        <img src="../assets/gallerie2.png"/>
-      </div>
-      <div class="div3">
-        <img src="../assets/gallerie3.png"/>
-      </div>
-      <div class="div4">
-        <img src="../assets/gallerie4.png"/>
-      </div>
-      <div class="div5">
-        <img src="../assets/gallerie5.png"/>
-      </div>
-    </div>
-    <div class="gallery_text">
-      <h2>Gallerie</h2>
-    </div>
-    <div class="div6">
-      <img src="../assets/gallerie6.png"/>
+    </Slide>
+    <template #addons>
+      <Pagination />
+    </template>
+  </Carousel>
+  <div class="gallery">
+    <div class="gallery-item" v-for="img in galleryImages" :key="img">
+      <img :src="img" class="gallery-image" />
     </div>
   </div>
 </template>
 
+<script setup>
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+
+import defile1 from '../assets/basket1.png'
+import defile2 from '../assets/foot1.png'
+import defile3 from '../assets/gallerie.png'
+import gal2 from '../assets/gal2.png'
+import gal3 from '../assets/gal3.png'
+import gal4 from '../assets/gal4.png'
+import gal5 from '../assets/gal5.png'
+import gal6 from '../assets/gal6.jpg'
+import gal7 from '../assets/gal7.png'
+
+
+const items = [
+  { image: defile1 },
+  { image: defile2 },
+  { image: defile3 }
+]
+
+const galleryImages = [gal2, gal3, gal4, gal5, gal6, gal7]
+</script>
+
 <style scoped>
-.container {
+.carousel__item {
+  display: flex;
+  color: white;
   text-align: center;
-  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('../assets/gallerie.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 250vh;
 }
 
-.gallery_text h2 {
-  background-color: #ffffff;
-  padding: 5%;
-  font-size: 2rem;
-  margin: 7%;
-  border-radius: 10px;
+.carousel-image {
+  width: 100%;
+  border-radius: 0px;
 }
 
-.parent {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 10px;
-  padding-top: 5%;
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:10px;
+  margin: 5%;
 }
 
-.div1 { grid-area: 1 / 1 / 2 / 2; }
-.div2 { grid-area: 2 / 1 / 3 / 2; }
-.div3 { grid-area: 1 / 2 / 3 / 3; }
-.div4 { grid-area: 1 / 3 / 2 / 4; }
-.div5 { grid-area: 2 / 3 / 3 / 4; }
+.gallery-item {
+  width: 32%; 
+  margin-bottom: 20px;
+}
 
-/* Styles pour la version mobile */
-@media (max-width: 968px) {
-  .parent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .div1, .div2, .div4, .div5 {
-    width: 100%;
-  }
-
-  .gallery_text,
-  .div3,
-  .div6 {
-    display: none;
-  }
+.gallery-image {
+  width: 100%;
+  border-radius: 8px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="reservations-dashboard">
     <div class="header">
-      <h1>Réservations des Événements</h1>
+      <h1>Récapitulatif des réservations</h1>
     </div>
     <div v-for="match in matchs" :key="match._id" class="match-reservations">
       <h3>{{ match.team1 }} vs {{ match.team2 }} - {{ new Date(match.date).toLocaleString() }}</h3>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="header">
-      <h1>Entraînements des Terrains</h1>
+      <h1>Réservation des Terrains</h1>
     </div>
     <div v-if="trainingSessions.length > 0">
       <div v-for="session in trainingSessions" :key="session._id" class="training-session">
@@ -75,7 +75,6 @@ onMounted(() => {
   fetchReservations();
 });
 </script>
-
 <style scoped>
 .reservations-dashboard {
   padding: 2rem;
@@ -83,6 +82,7 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #f0f0f0;
 }
 
 .header {
@@ -91,35 +91,47 @@ onMounted(() => {
 }
 
 .header h1 {
-  color: #333;
+  color: #284B63; 
   font-size: 2.5rem;
+  font-weight: bold;
 }
 
-.match-reservations,
-.terrain-reservation {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 1.5rem;
+.training-session {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
   margin-bottom: 2rem;
-  width: 70%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 h3 {
-  color: #007bff;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  color: #3DCBF8; 
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .reservation,
-.reservation-details {
+.person {
   background: #e9ecef;
-  padding: 0.5rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  
 }
 
 .person {
-  padding-left: 1rem;
+  padding-left: 2rem;
+  border-left: 3px solid #F83D3D;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+strong {
+  color: #000;
 }
 </style>

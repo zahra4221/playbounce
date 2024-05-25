@@ -2,7 +2,8 @@
 <script setup>
 import { ref, provide } from 'vue';
 import Header from './components/TheHeader.vue';
-
+import TheFooter
+ from './components/TheFooter.vue';
 const isLoggedIn = ref(!!localStorage.getItem('token'));
 const userRole = ref(localStorage.getItem('role'));
 
@@ -12,8 +13,8 @@ provide('userRole', userRole);
 <template>
   <div id="app">
     <Header></Header>
-    <router-view />
     <TheFooter></TheFooter>
+
   </div>
 </template>
 
