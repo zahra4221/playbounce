@@ -27,7 +27,7 @@ const matchs = ref([]);
 
 const fetchMatchs = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/matchs');
+    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs`);
     matchs.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
@@ -35,7 +35,7 @@ const fetchMatchs = async () => {
 };
 
 const getLogoUrl = (logoPath) => {
-  return `http://localhost:3000/${logoPath}`;
+  return `$import.meta.env.VITE_APP_URL}/${logoPath}`;
 };
 
 onMounted(fetchMatchs);

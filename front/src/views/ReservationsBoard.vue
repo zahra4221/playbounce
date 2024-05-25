@@ -48,7 +48,7 @@ const trainingReservations = ref([]);
 
 const fetchReservations = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/matchs');
+    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs`);
     matchs.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des réservations :', error);
@@ -58,7 +58,7 @@ const trainingSessions = ref([]);
 
 const fetchTrainingSessions = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/trainingReservations', {
+    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/trainingReservations`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

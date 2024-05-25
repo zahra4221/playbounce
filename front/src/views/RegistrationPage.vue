@@ -41,7 +41,7 @@ const password = ref('');
 
 const registerUser = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/api/auth/signup', {
+        const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/auth/signup`, {
             firstName: firstName.value,
             lastName: lastName.value,
             birthDate: birthDate.value,

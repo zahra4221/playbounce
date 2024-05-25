@@ -56,7 +56,7 @@ function submitForm() {
         message: message.value
     };
 
-    fetch('http://localhost:3000/contact', {
+    fetch(`${import.meta.env.VITE_APP_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

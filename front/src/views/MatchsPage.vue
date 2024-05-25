@@ -71,7 +71,7 @@ const reservationError = ref('');
 
 const fetchMatchs = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/matchs');
+    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs`);
     matchs.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
@@ -97,8 +97,9 @@ const closeReservationModal = () => {
 };
 
 const getLogoUrl = (logoPath) => {
-  return `http://localhost:3000/${logoPath}`;
+  return `${import.meta.env.VITE_APP_URL}/${logoPath}`;
 };
+
 
 watch(numPeople, (newNumPeople) => {
   const newPeople = [];
@@ -118,7 +119,7 @@ const reserveMatch = async () => {
     router.push({ name: 'login' });
   } else {
     try {
-      const response = await axios.post(`http://localhost:3000/api/reserve/${selectedMatch.value._id}`, {
+      const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/reserve/${selectedMatch.value._id}`, {
         numPeople: numPeople.value,
         people: people.value
       }, {

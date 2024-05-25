@@ -129,7 +129,7 @@ Sur ce terrain unique, des trampolines sont intégrés directement sous les pani
           alert('Vous devez être connecté pour effectuer une réservation.');
           return;
         }
-        const response = await axios.post('http://localhost:3000/api/trainingReservations', {
+        const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/trainingReservations`, {
           firstName: firstName.value,
           email: email.value,
           phone: phone.value,

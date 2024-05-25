@@ -100,7 +100,7 @@ const deleteMatchId = ref('');
 
 const fetchMatchs = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/matchs');
+    const response = await axios.get(`${process.env.VUE_APP_API_URL}/api/matchs`);
     matchs.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des matchs :', error);
@@ -134,7 +134,7 @@ const addMatch = async () => {
 
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.post('http://localhost:3000/api/matchs/add', formData, {
+    const response = await axios.post(`${process.env.VUE_APP_API_URL}/api/matchs/add`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
@@ -150,7 +150,7 @@ const addMatch = async () => {
 const updateScore = async () => {
   try {
     const token = localStorage.getItem('token');
-    await axios.put(`http://localhost:3000/api/matchs/score/${selectedMatch.value}`, {
+    await axios.put(`${process.env.VUE_APP_API_URL}/api/matchs/score/${selectedMatch.value}`, {
       team1Score: team1Score.value,
       team2Score: team2Score.value
     }, {
@@ -169,7 +169,7 @@ const updateScore = async () => {
 const deleteMatch = async () => {
   try {
     const token = localStorage.getItem('token');
-    await axios.delete(`http://localhost:3000/api/matchs/${deleteMatchId.value}`, {
+    await axios.delete(`${import.meta.env.VITE_APP_URL}/api/matchs/${deleteMatchId.value}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

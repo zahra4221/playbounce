@@ -42,12 +42,12 @@ const fetchUserReservations = async () => {
 try {
   const token = localStorage.getItem('token');
 
-  const trainingResponse = await axios.get('http://localhost:3000/api/trainingReservations/user', {
+  const trainingResponse = await axios.get(`${import.meta.env.VITE_APP_URL}/api/trainingReservations/user`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   trainingReservations.value = trainingResponse.data;
 
-  const matchResponse = await axios.get('http://localhost:3000/api/matchs/reservations/user', {
+  const matchResponse = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs/reservations/user`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   matchReservations.value = matchResponse.data;

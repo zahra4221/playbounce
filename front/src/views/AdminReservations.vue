@@ -25,7 +25,7 @@
   const fetchReservations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/events/reservations', {
+      const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/events/reservations`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       reservations.value = response.data;
